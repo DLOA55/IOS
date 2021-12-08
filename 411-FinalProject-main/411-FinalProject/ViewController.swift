@@ -8,11 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     // creating an outlet for the view
     @IBOutlet var tableView: UITableView!
-    
+    private var ov = SecondaryViewController()
     var taskLists = [String]()
+    var index = -1;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +48,15 @@ class ViewController: UIViewController {
                 //print("task")
                 //print(task)
                 taskLists.append(task)
+                ov.element.append([String]())
             }
         }
         //load new tasks
         tableView.reloadData()
     }
+    
+    
+    
     func taskRemoved(sending: String) {
 
         guard let count = UserDefaults().value(forKey: "count") as? Int else {
@@ -90,8 +95,11 @@ extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //tableView.deselectRow(at: indexPath, animated: true)
-        let vc = storyboard?.instantiateViewController(withIdentifier: "TaskViewControllerID") as! TaskViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        index = indexPath.row 
+        ov = storyboard?.instantiateViewController(withIdentifier: "Second") as! SecondaryViewController
+        ov.title = taskLists[indexPath.row]
+        ov.index = indexPath.row
+        self.navigationController?.pushViewController(ov, animated: true)
     }
     
 }
