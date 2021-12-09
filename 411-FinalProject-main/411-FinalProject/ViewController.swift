@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         }
         //my issue with updating the amount of tasks is in this for loop
         for x in 0..<count {
-            if let task = UserDefaults().value(forKey: "task_\(x+1)") as? String {
+            if let task = UserDefaults().value(forKey: "list_\(x+1)") as? String {
                 //print("task")
                 //print(task)
                 taskLists.append(task)
@@ -66,9 +66,9 @@ class ViewController: UIViewController {
         // if the value in UserDefaults matches what was removed from the array
         // then remove that (issues with duplicate list titles)
         for x in 0..<count {
-            if let task = UserDefaults().value(forKey: "task_\(x+1)") as? String {
+            if let task = UserDefaults().value(forKey: "list_\(x+1)") as? String {
                 if task == sending {
-                    UserDefaults().removeObject(forKey: "task_\(x+1)")
+                    UserDefaults().removeObject(forKey: "list_\(x+1)")
                     return
                 }
             }
@@ -78,7 +78,7 @@ class ViewController: UIViewController {
     @IBAction func didTappAdd() {
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "entry") as! EntryViewController
-        vc.title = "New Task"
+        vc.title = "New List"
         vc.update = { //reload the tables
             DispatchQueue.main.async {
                 self.updateTasks()

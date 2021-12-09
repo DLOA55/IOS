@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class SecondaryViewController: UIViewController{
+class SecondaryViewController: UIViewController, UITableViewDelegate{
     var index = -1
     var element = [[String]()]
     @IBOutlet var tableView: UITableView!
@@ -18,6 +18,11 @@ class SecondaryViewController: UIViewController{
     
      override func viewDidLoad() {
         super.viewDidLoad()
+         
+        self.title = "Tasks"
+        tableView.delegate = self
+        tableView.dataSource = self
+         
     }
      override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -67,13 +72,15 @@ class SecondaryViewController: UIViewController{
     
     @IBAction func didTappAdd() {
         
-        let vc = storyboard?.instantiateViewController(withIdentifier: "entry") as! EntryViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "secondentry") as! SecondEntryViewController
         vc.title = "New Task"
+        /*
         vc.update = { //reload the tables
             DispatchQueue.main.async {
                 self.updateTasks()
             }
         }
+         */
         navigationController?.pushViewController(vc, animated: true)
     }
 

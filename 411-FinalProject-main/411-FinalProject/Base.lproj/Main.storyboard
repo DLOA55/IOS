@@ -88,6 +88,40 @@
             </objects>
             <point key="canvasLocation" x="929" y="824"/>
         </scene>
+        <!--Second Entry View Controller-->
+        <scene sceneID="Ylo-7L-qxU">
+            <objects>
+                <viewController storyboardIdentifier="secondentry" id="hM2-DV-bdp" customClass="SecondEntryViewController" customModule="_11_FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WbM-hF-Qg4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cGX-h3-IjO">
+                                <rect key="frame" x="20" y="64" width="374" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="XuH-Vd-Mlc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TQ5-i6-8rV"/>
+                        <color key="backgroundColor" systemColor="systemFillColor"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cGX-h3-IjO" firstAttribute="leading" secondItem="TQ5-i6-8rV" secondAttribute="leading" constant="20" id="ZX5-DX-NT3"/>
+                            <constraint firstItem="TQ5-i6-8rV" firstAttribute="trailing" secondItem="cGX-h3-IjO" secondAttribute="trailing" constant="20" id="ewi-V3-VwD"/>
+                            <constraint firstItem="cGX-h3-IjO" firstAttribute="top" secondItem="TQ5-i6-8rV" secondAttribute="top" constant="20" id="m2X-po-HeQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="field" destination="cGX-h3-IjO" id="q1a-o5-VZU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7In-pC-JIA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1787" y="824"/>
+        </scene>
         <!--Secondary View Controller-->
         <scene sceneID="84C-TT-rbx">
             <objects>
@@ -103,21 +137,24 @@
                                     <navigationItem id="jd5-oY-CYC">
                                         <barButtonItem key="rightBarButtonItem" title="Add" id="p4W-Vq-NDG">
                                             <connections>
-                                                <action selector="didTappAdd" destination="act-vw-hhe" id="dTB-hG-vKx"/>
+                                                <action selector="didTappAdd" destination="act-vw-hhe" id="ViQ-Rz-d05"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LqR-l5-dgC">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LqR-l5-dgC">
+                                <rect key="frame" x="0.0" y="39" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="774" id="iCo-Jq-mMd"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="FRB-Vp-xvu">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FRB-Vp-xvu" id="hQQ-TY-lNd">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

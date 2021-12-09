@@ -18,17 +18,17 @@ class EntryViewController: UIViewController,  UITextFieldDelegate{
         field.delegate = self
         
         // programming the button that saves tasks
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveTask))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveList))
         // Do any additional setup after loading the view.
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        saveTask()
+        saveList()
         
         return true
     }
 
-    @objc func saveTask() {
+    @objc func saveList() {
         guard let text = field.text, !text.isEmpty else {
             return
         }
@@ -39,7 +39,7 @@ class EntryViewController: UIViewController,  UITextFieldDelegate{
         let newCount = count + 1
         
         UserDefaults().set(newCount, forKey: "count") //update the count
-        UserDefaults().set(text, forKey: "task_\(newCount)")
+        UserDefaults().set(text, forKey: "list_\(newCount)")
         
         //updates ViewController
         update?()
