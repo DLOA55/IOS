@@ -8,12 +8,14 @@
 import UIKit
 
 class SecondEntryViewController: UIViewController, UITextFieldDelegate {
-    
+
     @IBOutlet var field: UITextField!
+    var update: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         field.delegate = self
+        
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveNewTask))
         // Do any additional setup after loading the view.
@@ -26,7 +28,23 @@ class SecondEntryViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveNewTask() {
-        // here you add the saving of the task
+        
+        guard let text = field.text, !text.isEmpty else {
+            return
+        }
+
+        guard let count = UserDefaults().value(forKey: "count2") as? Int else {
+            return
+        }
+        
+        let newCount = count + 1
+        
+        UserDefaults().set(newCount, forKey: "count2")
+        UserDefaults().set(text, forKey: "task_\(newCount)")
+        
+        update?()
+        
+        navigationController?.popViewController(animated: true)
     }
 
     

@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var taskLists = [String]()
     var index = -1;
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -31,11 +32,11 @@ class ViewController: UIViewController {
         }
         
         // get the saved tasks
-        updateTasks()
+        updateLists()
     }
     
     //update the tasks
-    func updateTasks() {
+    func updateLists() {
         //remove all before resetting
         taskLists.removeAll()
         
@@ -81,7 +82,7 @@ class ViewController: UIViewController {
         vc.title = "New List"
         vc.update = { //reload the tables
             DispatchQueue.main.async {
-                self.updateTasks()
+                self.updateLists()
             }
         }
         navigationController?.pushViewController(vc, animated: true)

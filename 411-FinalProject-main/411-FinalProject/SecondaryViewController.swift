@@ -11,10 +11,11 @@ class SecondaryViewController: UIViewController, UITableViewDelegate{
     var element = [[String]()]
     @IBOutlet var tableView: UITableView!
     
-    
+    /*
     @IBAction func home_button(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    */
     
      override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,26 +24,38 @@ class SecondaryViewController: UIViewController, UITableViewDelegate{
         tableView.delegate = self
         tableView.dataSource = self
          
+         //setup
+         if !UserDefaults().bool(forKey: "setup2") {
+             UserDefaults().set(true, forKey: "setup2")
+             UserDefaults().set(0, forKey: "count2")
+             print("count")
+             print("count2")
+             
+         }
+         
+         updateTasks()
     }
+    /*
      override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+     */
+    
 
 
-
-
+    
     func updateTasks() {
         //remove all before resetting
         element[index].removeAll()
         
-        guard let count = UserDefaults().value(forKey: "count") as? Int else {
+        guard let count = UserDefaults().value(forKey: "count2") as? Int else {
             return
         }
         //my issue with updating the amount of tasks is in this for loop
         for x in 0..<count {
             if let task = UserDefaults().value(forKey: "task_\(x+1)") as? String {
                 //print("task")
-                //print(task)
+                print(task)
                 element[index].append(task)
             }
         }
@@ -51,7 +64,7 @@ class SecondaryViewController: UIViewController, UITableViewDelegate{
     }
     
     
-    
+    /*
     func taskRemoved(sending: String) {
 
         guard let count = UserDefaults().value(forKey: "count") as? Int else {
@@ -69,18 +82,18 @@ class SecondaryViewController: UIViewController, UITableViewDelegate{
             }
         }
     }
+    */
     
-    @IBAction func didTappAdd() {
-        
+    @IBAction func didTapAdd() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "secondentry") as! SecondEntryViewController
         vc.title = "New Task"
-        /*
+        
         vc.update = { //reload the tables
             DispatchQueue.main.async {
                 self.updateTasks()
             }
         }
-         */
+         
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -96,12 +109,12 @@ extension SecondaryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "taskcell", for: indexPath)
         cell.textLabel?.text = element[index][indexPath.row]
         
         return cell
     }
-    
+    /*
     //deleting a cell
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -126,5 +139,6 @@ extension SecondaryViewController: UITableViewDataSource {
             tableView.endUpdates()
         }
     }
+     */
 }
 
