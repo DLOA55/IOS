@@ -33,7 +33,7 @@ class EntryViewController: UIViewController,  UITextFieldDelegate{
         }
         let newList = List(title: text, tasks: nil)
         update?(newList)
-        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true) // exit the EntryViewController
         
         
     }

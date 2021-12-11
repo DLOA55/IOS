@@ -16,6 +16,7 @@ class SecondEntryViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         field.delegate = self
+        // programming the button that saves tasks
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveNewTask))
     }
     
@@ -30,7 +31,7 @@ class SecondEntryViewController: UIViewController, UITextFieldDelegate {
             return
         }
         update?(text)
-        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true) // exit the EntryViewController
     }
 
     

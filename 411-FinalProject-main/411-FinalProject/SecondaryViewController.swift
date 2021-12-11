@@ -93,10 +93,12 @@ extension SecondaryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = lists[currentListIndex].tasks?[indexPath.row] // can you explain the line above
+        cell.textLabel?.text = lists[currentListIndex].tasks?[indexPath.row]
+        
         return cell
     }
     
+    // deleting a cell
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
@@ -111,7 +113,7 @@ extension SecondaryViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.endUpdates()
         }
     }
-    
+    //animation for cell deletion
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
