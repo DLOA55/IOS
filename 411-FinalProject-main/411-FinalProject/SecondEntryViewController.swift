@@ -9,8 +9,6 @@ import UIKit
 
 class SecondEntryViewController: UIViewController, UITextFieldDelegate {
     
-    var update: (()-> Void)?
-    
     @IBOutlet var field: UITextField!
 
     override func viewDidLoad() {
@@ -27,23 +25,8 @@ class SecondEntryViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    @objc func saveNewTask() {
-        guard let text = field.text, !text.isEmpty else {
-            return
-        }
-        //save tasks
-        guard let count = UserDefaults().value(forKey: "counts") as? Int else{
-            return
-        }//keep track of tasks
-        let newCounts = count + 1
-        
-        UserDefaults().set(newCounts, forKey: "counts") //update the count
-        UserDefaults().set(text, forKey: "lists_\(newCounts)")
-        
-        //updates ViewController
-        update?()
-        navigationController?.popViewController(animated: true)
-        
+    @IBAction func saveNewTask() {
+        // here you add the saving of the task
     }
 
     

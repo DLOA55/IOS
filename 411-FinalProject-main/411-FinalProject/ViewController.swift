@@ -25,13 +25,8 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         
         //setup
-        if UserDefaults().value(forKey: "list_\(1)") == nil{
-            UserDefaults().set(false,forKey: "setup")
-            print ("changedBool")
-        }
         if !UserDefaults().bool(forKey: "setup") { //if hasn't been set up, set defaults
-            //UserDefaults().set(true, forKey: "setup")
-            print("changed count to zero")
+            UserDefaults().set(true, forKey: "setup")
             UserDefaults().set(0, forKey: "count")
         }
         
@@ -47,7 +42,6 @@ class ViewController: UIViewController {
         guard let count = UserDefaults().value(forKey: "count") as? Int else {
             return
         }
-        print(count)
         //my issue with updating the amount of tasks is in this for loop
         for x in 0..<count {
             if let task = UserDefaults().value(forKey: "list_\(x+1)") as? String {
@@ -55,7 +49,6 @@ class ViewController: UIViewController {
                 //print(task)
                 taskLists.append(task)
                 ov.element.append([String]())
-                //ov.inList+=1
             }
         }
         //load new tasks
@@ -69,17 +62,15 @@ class ViewController: UIViewController {
         guard let count = UserDefaults().value(forKey: "count") as? Int else {
             return
         }
-        
+
         // if the value in UserDefaults matches what was removed from the array
         // then remove that (issues with duplicate list titles)
         for x in 0..<count {
             if let task = UserDefaults().value(forKey: "list_\(x+1)") as? String {
                 if task == sending {
-                    UserDefaults().set(count-1,forKey: "count") //what i added so that count doesnt just go up and never down
                     UserDefaults().removeObject(forKey: "list_\(x+1)")
                     return
-                    
-                                    }
+                }
             }
         }
     }
@@ -106,7 +97,7 @@ extension ViewController: UITableViewDelegate {
         //tableView.deselectRow(at: indexPath, animated: true)
         index = indexPath.row 
         ov = storyboard?.instantiateViewController(withIdentifier: "Second") as! SecondaryViewController
-        ov.maketitle = taskLists[indexPath.row]
+        ov.title = taskLists[indexPath.row]
         ov.index = indexPath.row
         self.navigationController?.pushViewController(ov, animated: true)
     }
@@ -142,9 +133,8 @@ extension ViewController: UITableViewDataSource {
             print(sending)
             
             taskLists.remove(at: indexPath.row)
-            ov.element.remove(at: indexPath.row)
-            ov.inList-=1
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
             taskRemoved(sending: sending)
         
             tableView.endUpdates()
