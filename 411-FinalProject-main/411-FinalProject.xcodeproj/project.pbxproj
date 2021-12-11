@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,7 @@
 		FCCA9B65272B867A00033445 /* _11_FinalProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA9B64272B867A00033445 /* _11_FinalProjectUITests.swift */; };
 		FCCA9B67272B867A00033445 /* _11_FinalProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA9B66272B867A00033445 /* _11_FinalProjectUITestsLaunchTests.swift */; };
 		FCCA9B76273B71B000033445 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA9B75273B71AF00033445 /* EntryViewController.swift */; };
+		FCCA9B78273B71EA00033445 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA9B77273B71EA00033445 /* TaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		FCCA9B64272B867A00033445 /* _11_FinalProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _11_FinalProjectUITests.swift; sourceTree = "<group>"; };
 		FCCA9B66272B867A00033445 /* _11_FinalProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _11_FinalProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FCCA9B75273B71AF00033445 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		FCCA9B77273B71EA00033445 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				FCCA9B49272B867600033445 /* _11_FinalProject.xcdatamodeld */,
 				FCCA9B75273B71AF00033445 /* EntryViewController.swift */,
 				FC7F39022761D46900574352 /* SecondEntryViewController.swift */,
+				FCCA9B77273B71EA00033445 /* TaskViewController.swift */,
 			);
 			path = "411-FinalProject";
 			sourceTree = "<group>";
@@ -201,7 +204,6 @@
 		FCCA9B35272B867600033445 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
@@ -219,7 +221,7 @@
 				};
 			};
 			buildConfigurationList = FCCA9B38272B867600033445 /* Build configuration list for PBXProject "411-FinalProject" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -276,6 +278,7 @@
 				FCCA9B43272B867600033445 /* SceneDelegate.swift in Sources */,
 				8B0B50E527605621006E1C7E /* SecondaryViewController.swift in Sources */,
 				FCCA9B76273B71B000033445 /* EntryViewController.swift in Sources */,
+				FCCA9B78273B71EA00033445 /* TaskViewController.swift in Sources */,
 				FC7F39032761D46900574352 /* SecondEntryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,6 +458,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67KT48MR5B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "411-FinalProject/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -462,6 +466,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -482,6 +487,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67KT48MR5B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "411-FinalProject/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -489,6 +495,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

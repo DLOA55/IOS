@@ -2,139 +2,119 @@
 //  SecondViewController.swift
 //  411-FinalProject
 //
-//  Created by Deangelo Aguilar on 12/7/21.
+//  Created by Deangelo Aguilar and Juan Cocina on 12/7/21.
 //
 
 import UIKit
-class SecondaryViewController: UIViewController, UITableViewDelegate{
-    var index = -1
-    var element = [[String]()]
+
+class SecondaryViewController: UIViewController {
+    
+    // MARK:- Outlets
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var nothingView: UIView!
     
-    /*
-    @IBAction func home_button(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    */
+    // MARK:- Properties
+    var currentListIndex = 0
+    var lists: [List] = []
+    var maketitle = "Task"
+    var update: ((_ lists: [List])-> Void)?
     
+    // MARK:- LifeCycle Methods
      override func viewDidLoad() {
         super.viewDidLoad()
-         
-        self.title = "Tasks"
-        tableView.delegate = self
-        tableView.dataSource = self
-         
-         //setup
-         if !UserDefaults().bool(forKey: "setup2") {
-             UserDefaults().set(true, forKey: "setup2")
-             UserDefaults().set(0, forKey: "count2")
-             
-         }
-         
-         updateTasks()
-    }
-    /*
-     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-     */
+        setupViews()
+     }
     
-
-
-    
-    func updateTasks() {
-        //remove all before resetting
-        element[index].removeAll()
-        
-        guard let count = UserDefaults().value(forKey: "count2") as? Int else {
-            return
-        }
-        //my issue with updating the amount of tasks is in this for loop
-        for x in 0..<count {
-            if let task = UserDefaults().value(forKey: "task_\(x+1)") as? String {
-                element[index].append(task)
-            }
-        }
-        //load new tasks
-        tableView.reloadData()
-    }
-    
-    
-    /*
-    func taskRemoved(sending: String) {
-
-        guard let count = UserDefaults().value(forKey: "count") as? Int else {
-            return
-        }
-
-        // if the value in UserDefaults matches what was removed from the array
-        // then remove that (issues with duplicate list titles)
-        for x in 0..<count {
-            if let task = UserDefaults().value(forKey: "task_\(x+1)") as? String {
-                if task == sending {
-                    UserDefaults().removeObject(forKey: "task_\(x+1)")
-                    return
-                }
-            }
-        }
-    }
-    */
-    
-    @IBAction func didTapAdd() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "secondentry") as! SecondEntryViewController
-        vc.title = "New Task"
-        
-        vc.update = { //reload the tables
-            DispatchQueue.main.async {
-                self.updateTasks()
-            }
-        }
-         
-        navigationController?.pushViewController(vc, animated: true)
-    }
-
+//    // MARK:- Actions
+//    @IBAction func home_button(_ sender: UIButton) {
+//        self.navigationController?.popViewController(animated: true)
+//    }
 
 }
 
+// MARK:- Private Methods
+extension SecondaryViewController {
+    private func setupViews() {
+        self.title = maketitle
+        let addButton = UIBarButtonItem(title: "Add Task", style: .done, target: self, action: #selector(addTaskTapped))
+        navigationItem.rightBarButtonItem = addButton
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+        handleAvailability()
+    }
+    
+    @objc private func addTaskTapped() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "secondentry") as! SecondEntryViewController
+        vc.title = "New Task"
+        vc.update = { task in //reload the tables
+            DispatchQueue.main.async {
+                if self.lists[self.currentListIndex].tasks != nil {
+                    self.lists[self.currentListIndex].tasks?.append(task)
+                } else {
+                    self.lists[self.currentListIndex].tasks = [task]
+                }
+                self.saveLists()
+                self.tableView.reloadData()
+                self.update?(self.lists)
+            }
+        }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func saveLists() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(lists) {
+            UserDefaults.standard.set(encoded, forKey: "Lists")
+        }
+        handleAvailability()
+    }
+    
+    private func handleAvailability() {
+        if lists[currentListIndex].tasks?.count == 0 || lists[currentListIndex].tasks == nil {
+            setNothingView(alpha: 1)
+        } else {
+            setNothingView(alpha: 0)
+        }
+    }
+    
+    private func setNothingView(alpha: CGFloat) {
+        UIView.animate(withDuration: 0.5) {
+            self.nothingView.alpha = alpha
+        }
+    }
+}
 
-
-
-extension SecondaryViewController: UITableViewDataSource {
+// MARK:- TableView Delegate
+extension SecondaryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return element[index].count
+        return lists[currentListIndex].tasks?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "taskcell", for: indexPath)
-        cell.textLabel?.text = element[index][indexPath.row]
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = lists[currentListIndex].tasks?[indexPath.row] // can you explain the line above
         return cell
-    }
-    /*
-    //deleting a cell
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-            
-            //delete from the array
-            let sending: String = element[index][indexPath.row]
-            print(sending)
-            
-            element[index].remove(at: indexPath.row)
+            lists[currentListIndex].tasks?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            taskRemoved(sending: sending)
-        
+            saveLists()
+            update?(self.lists)
             tableView.endUpdates()
         }
     }
-     */
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
+
 

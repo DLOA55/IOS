@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  411-FinalProject
 //
-//  Created by Juan Cocina on 10/28/21.
+//  Created by Juan Cocina and Deangelo Aguilar on 10/28/21.
 //
 
 import UIKit

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,24 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="6593731_bee_farm_garden_hive_icon" translatesAutoresizingMaskIntoConstraints="NO" id="2hC-SY-aat">
-                                <rect key="frame" x="132" y="77" width="151" height="514"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6593731_bee_farm_garden_hive_icon" translatesAutoresizingMaskIntoConstraints="NO" id="2hC-SY-aat">
+                                <rect key="frame" x="131.5" y="96.5" width="151" height="514"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Busy Bee" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBV-Ng-igU">
-                                <rect key="frame" x="50" y="415" width="314" height="66"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Busy Bee" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBV-Ng-igU">
+                                <rect key="frame" x="171.5" y="449.5" width="71" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
-                            <constraint firstItem="2hC-SY-aat" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="86c-N5-eZm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BBV-Ng-igU" secondAttribute="trailing" constant="50" id="FvQ-Yr-eFc"/>
-                            <constraint firstAttribute="trailing" secondItem="2hC-SY-aat" secondAttribute="trailing" constant="50" id="Gm0-uX-vgt"/>
-                            <constraint firstItem="2hC-SY-aat" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="PSZ-Xu-hvS"/>
-                            <constraint firstItem="BBV-Ng-igU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="v2O-Rn-6Ia"/>
+                            <constraint firstItem="2hC-SY-aat" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.78" id="AGp-M0-2cf"/>
+                            <constraint firstItem="2hC-SY-aat" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.573661" id="Lt3-fe-LtJ"/>
+                            <constraint firstItem="BBV-Ng-igU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="WKS-13-0w5"/>
+                            <constraint firstItem="BBV-Ng-igU" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.015" id="XXu-6F-sz5"/>
+                            <constraint firstItem="2hC-SY-aat" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gxG-w4-EL6"/>
+                            <constraint firstItem="2hC-SY-aat" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.364734" id="m3g-so-P9P"/>
                         </constraints>
                     </view>
                 </viewController>

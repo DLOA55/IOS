@@ -2,14 +2,14 @@
 //  EntryViewController.swift
 //  411-FinalProject
 //
-//  Created by Juan Cocina on 11/9/21.
+//  Created by Juan Cocina and Deangelo Aguilar on 11/9/21.
 //
 
 import UIKit
 
 class EntryViewController: UIViewController,  UITextFieldDelegate{
     
-    var update: (()-> Void)?
+    var update: ((_ newList: List)-> Void)?
     
     @IBOutlet var field: UITextField!
 
@@ -24,7 +24,6 @@ class EntryViewController: UIViewController,  UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         saveList()
-        
         return true
     }
 
@@ -32,17 +31,8 @@ class EntryViewController: UIViewController,  UITextFieldDelegate{
         guard let text = field.text, !text.isEmpty else {
             return
         }
-        //save tasks
-        guard let count = UserDefaults().value(forKey: "count") as? Int else{
-            return
-        }//keep track of tasks
-        let newCount = count + 1
-        
-        UserDefaults().set(newCount, forKey: "count") //update the count
-        UserDefaults().set(text, forKey: "list_\(newCount)")
-        
-        //updates ViewController
-        update?()
+        let newList = List(title: text, tasks: nil)
+        update?(newList)
         navigationController?.popViewController(animated: true)
         
         
