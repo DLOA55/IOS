@@ -70,6 +70,7 @@ class ViewController: UIViewController {
             if let task = UserDefaults().value(forKey: "list_\(x+1)") as? String {
                 if task == sending {
                     UserDefaults().removeObject(forKey: "list_\(x+1)")
+                    UserDefaults().set(count-1, forKey: "count")
                     return
                 }
             }

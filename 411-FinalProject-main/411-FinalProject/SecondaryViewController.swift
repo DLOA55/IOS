@@ -28,8 +28,6 @@ class SecondaryViewController: UIViewController, UITableViewDelegate{
          if !UserDefaults().bool(forKey: "setup2") {
              UserDefaults().set(true, forKey: "setup2")
              UserDefaults().set(0, forKey: "count2")
-             print("count")
-             print("count2")
              
          }
          
@@ -54,8 +52,6 @@ class SecondaryViewController: UIViewController, UITableViewDelegate{
         //my issue with updating the amount of tasks is in this for loop
         for x in 0..<count {
             if let task = UserDefaults().value(forKey: "task_\(x+1)") as? String {
-                //print("task")
-                print(task)
                 element[index].append(task)
             }
         }
